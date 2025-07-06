@@ -1,0 +1,34 @@
+{
+  "name": "ai-commit-reviewer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "predev": "pnpm install",
+    "dev": "nodemon --exec ts-node src/server.ts",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "keywords": [],
+  "author": "Mohammed Amin Painter",
+  "license": "ISC",
+  "packageManager": "pnpm@10.10.0",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.56.0",
+    "@octokit/rest": "^22.0.0",
+    "@slack/web-api": "^7.9.3",
+    "dotenv": "^17.0.1",
+    "express": "^5.1.0",
+    "zod": "^3.25.74"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.30.1",
+    "@types/express": "^5.0.3",
+    "eslint": "^9.30.1",
+    "globals": "^16.3.0",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.35.1"
+  }
+}
