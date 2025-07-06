@@ -13,7 +13,7 @@ class GithubWebhookController extends BaseApiController {
   }
 
   setupRoutes() {
-    this.router.get("/", this.processGithubWebhook.bind(this));
+    this.router.post("/", this.processGithubWebhook.bind(this));
   }
 
   private async processGithubWebhook(req: Request, res: Response) {
