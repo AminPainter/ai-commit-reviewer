@@ -28,9 +28,12 @@ class GithubService {
   verifyWebhookSignature(
     signature: string | undefined,
     body: string,
-    secret?: string
+    secret: string
   ): boolean {
-    if (!secret || !signature) return true;
+    if (!secret || !signature)
+      throw new Error(
+        "Missing secret or signature for GitHub webhook verification"
+      );
     const expectedSignature =
       "sha256=" + createHmac("sha256", secret).update(body).digest("hex");
     return signature === expectedSignature;
