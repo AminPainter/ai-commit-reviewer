@@ -31,19 +31,20 @@ class GithubWebhookService {
   }
 
   async processGithubWebhook(signature: string, payload: string) {
-    const parsedPayload = JSON.parse(payload);
-
     this.githubService.verifyWebhookSignature(
       signature,
-      parsedPayload,
+      payload,
       envConfig.github.webhookSecret
     );
 
-    await this.githubService.getCommitDetails({
-      ownerName: parsedPayload.respository.owner.name,
-      repoName: parsedPayload.respository.name,
-      commitId: parsedPayload.commits[0].id,
-    });
+    // TODO: Fetch commit details from Github and pass it to the code review service
+    // const parsedPayload = JSON.parse(payload);
+
+    // await this.githubService.getCommitDetails({
+    //   ownerName: parsedPayload.respository.owner.name,
+    //   repoName: parsedPayload.respository.name,
+    //   commitId: parsedPayload.commits[0].id,
+    // });
 
     await this.codeReviewService.performCodeReview();
   }

@@ -21,7 +21,10 @@ class GithubWebhookController extends BaseApiController {
     if (typeof signature !== "string")
       throw new Error("Missing GitHub webhook signature");
 
-    await this.githubWebhookService.processGithubWebhook(signature, req.body);
+    await this.githubWebhookService.processGithubWebhook(
+      signature,
+      req.body.payload
+    );
 
     res.json({ status: "success" });
   }
